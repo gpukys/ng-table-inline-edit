@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { UsersService, User, Gender } from './users.service';
 
 @Component({
   selector: 'app-users',
@@ -7,16 +9,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsersComponent implements OnInit {
   displayedColumns: string[] = ['name', 'surname', 'dateOfBirth', 'gender'];
-  dataSource = [{name: 'Name', surname: 'Surname', dateOfBirth: '1997-11-14', gender: 'male'}];
+  loading = false;
+  dataSource: User[];
 
-  constructor() { }
+  genderChoices = [
+    {name: 'Male', value: Gender.male},
+    {name: 'Female', value: Gender.female}
+  ];
+
+  constructor(
+    private snackBar: MatSnackBar,
+    private usersService: UsersService
+  ) { }
 
   ngOnInit() {
+    this.loading = true;
+    this.usersService.getAllUsers().subscribe(res => {
+      this.dataSource = res;
+      this.loading = false;
+    }, err => { this.loading = false; })
   }
 
   onValueChange(user, fieldName, event) {
+    const initial = Object.assign({}, user);
     user[fieldName] = event;
-    console.log(user);
+    this.usersService.patchUser(user).subscribe(res => {
+      this.snackBar.open('Updated successfully', undefined, { duration: 2000 });
+    }, err => {
+      user = initial;
+      this.snackBar.open('An error occured', undefined, { duration: 2000 });
+    });
   }
 
 }

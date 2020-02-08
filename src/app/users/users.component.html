@@ -1,3 +1,4 @@
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
 <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
@@ -16,7 +17,7 @@
 
   <ng-container matColumnDef="gender">
     <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-    <mat-cell *matCellDef="let user"><app-choice-editor [value]="user.gender" (valueChange)="onValueChange(user, 'gender', $event)" [choices]="[{name: 'male', value: 'male'}, {name: 'female', value: 'female'}]"></app-choice-editor></mat-cell>
+    <mat-cell *matCellDef="let user"><app-choice-editor [value]="user.gender" (valueChange)="onValueChange(user, 'gender', $event)" [choices]="genderChoices"></app-choice-editor></mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

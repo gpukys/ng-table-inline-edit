@@ -1,0 +1,12 @@
+<button mat-icon-button
+        (click)="confirm.emit($event)">
+  <mat-icon>check</mat-icon>
+</button>
+<button mat-icon-button
+        (click)="cancel.emit($event)">
+  <mat-icon>close</mat-icon>
+</button>
+<button mat-icon-button
+        (click)="openDeleteConfirmationDialog()">
+  <mat-icon>delete</mat-icon>
+</button>

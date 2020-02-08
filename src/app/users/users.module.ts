@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { DateEditorComponent } from './editors/date-editor/date-editor.component';
 import { StringEditorComponent } from './editors/string-editor/string-editor.component';
 import { ChoiceEditorComponent } from './editors/choice-editor/choice-editor.component';
-import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared.module';
 import { DatePipe } from '@angular/common';
+import { DeletionConfirmationDialogComponent } from './editors/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
+import { EditorControlsComponent } from './editors/editor-controls/editor-controls.component';
+import { UsersService } from './users.service';
 
 
 @NgModule({
   declarations: [
     DateEditorComponent,
     StringEditorComponent,
-    ChoiceEditorComponent
+    ChoiceEditorComponent,
+    DeletionConfirmationDialogComponent,
+    EditorControlsComponent
   ],
   imports: [
     SharedModule
@@ -19,10 +23,15 @@ import { DatePipe } from '@angular/common';
   exports: [
     DateEditorComponent,
     StringEditorComponent,
-    ChoiceEditorComponent
+    ChoiceEditorComponent,
+    DeletionConfirmationDialogComponent
   ],
   providers: [
-    DatePipe
+    DatePipe,
+    UsersService
+  ],
+  entryComponents: [
+    DeletionConfirmationDialogComponent
   ]
 })
 export class UsersModule { }

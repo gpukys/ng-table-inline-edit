@@ -22,7 +22,25 @@ export class Editor {
     }
   }
 
-  emitValue(event) {}
-  revertChange(event) {}
+  constructor() { }
+
+  emitValue(event?) {
+    this.valueChange.emit(this.value);
+    this.initialValue = this.value;
+    this.editMode = false;
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+  }
+
+  revertChange(event) {
+    this.value = this.initialValue;
+    this.emitValue(event);
+  }
+
+  deleteValue() {
+    this.value = null;
+    this.emitValue();
+  }
 
 }

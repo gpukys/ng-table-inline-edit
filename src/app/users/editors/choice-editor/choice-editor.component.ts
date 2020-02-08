@@ -1,10 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Editor } from '../editor';
 
 @Component({
   selector: 'app-choice-editor',
   templateUrl: './choice-editor.component.html',
-  styleUrls: ['./choice-editor.component.scss']
+  styleUrls: ['./choice-editor.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChoiceEditorComponent extends Editor {
 
@@ -14,15 +15,8 @@ export class ChoiceEditorComponent extends Editor {
     super();
   }
 
-  emitValue(event) {
-    this.valueChange.emit(this.value);
-    this.initialValue = this.value;
-    this.editMode = false;
-    event.stopPropagation();
+  getChoiceName(value) {
+    return this.choices.filter(e => e.value === value)[0].name;
   }
 
-  revertChange(event) {
-    this.value = this.initialValue;
-    this.emitValue(event);
-  }
 }
