@@ -1,0 +1,24 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+    <mat-cell *matCellDef="let user"><app-string-editor [value]="user.name" (valueChange)="onValueChange(user, 'name', $event)"></app-string-editor></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="surname">
+    <mat-header-cell *matHeaderCellDef> Surname </mat-header-cell>
+    <mat-cell *matCellDef="let user"><app-string-editor [value]="user.surname" (valueChange)="onValueChange(user, 'surname', $event)"></app-string-editor></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dateOfBirth">
+    <mat-header-cell *matHeaderCellDef> Date of birth </mat-header-cell>
+    <mat-cell *matCellDef="let user"><app-date-editor [value]="user.dateOfBirth" (valueChange)="onValueChange(user, 'dateOfBirth', $event)"></app-date-editor></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="gender">
+    <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
+    <mat-cell *matCellDef="let user"><app-choice-editor [value]="user.gender" (valueChange)="onValueChange(user, 'gender', $event)" [choices]="[{name: 'male', value: 'male'}, {name: 'female', value: 'female'}]"></app-choice-editor></mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

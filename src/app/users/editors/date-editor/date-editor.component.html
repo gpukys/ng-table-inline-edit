@@ -1,0 +1,20 @@
+<span *ngIf="!editMode; else edit">
+  {{value | date: 'yyyy-MM-dd'}}
+</span>
+
+<ng-template #edit>
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" readonly (click)="datepicker.open()">
+    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker></mat-datepicker>
+  </mat-form-field>
+  <button mat-icon-button
+          (click)="emitValue($event)">
+    <mat-icon>check</mat-icon>
+  </button>
+  <button mat-icon-button
+          (click)="revertChange($event)">
+    <mat-icon>close</mat-icon>
+  </button>
+</ng-template>

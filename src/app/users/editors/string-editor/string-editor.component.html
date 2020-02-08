@@ -1,0 +1,17 @@
+<span *ngIf="!editMode; else edit">
+  {{value}}
+</span>
+
+<ng-template #edit>
+  <mat-form-field>
+    <input matInput [(ngModel)]="value">
+  </mat-form-field>
+  <button mat-icon-button
+          (click)="emitValue($event)">
+    <mat-icon>check</mat-icon>
+  </button>
+  <button mat-icon-button
+          (click)="revertChange($event)">
+    <mat-icon>close</mat-icon>
+  </button>
+</ng-template>

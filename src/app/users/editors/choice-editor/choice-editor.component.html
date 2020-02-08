@@ -1,0 +1,19 @@
+<span *ngIf="!editMode; else edit">
+  {{value}}
+</span>
+
+<ng-template #edit>
+  <mat-form-field>
+    <mat-select [(ngModel)]="value">
+      <mat-option *ngFor="let choice of choices" [value]="choice.value">{{choice.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-icon-button
+          (click)="emitValue($event)">
+    <mat-icon>check</mat-icon>
+  </button>
+  <button mat-icon-button
+          (click)="revertChange($event)">
+    <mat-icon>close</mat-icon>
+  </button>
+</ng-template>
