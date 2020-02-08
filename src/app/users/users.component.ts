@@ -33,12 +33,14 @@ export class UsersComponent implements OnInit {
   onValueChange(user, fieldName, event) {
     const initial = Object.assign({}, user);
     user[fieldName] = event;
-    this.usersService.patchUser(user).subscribe(res => {
-      this.snackBar.open('Updated successfully', undefined, { duration: 2000 });
-    }, err => {
-      user = initial;
-      this.snackBar.open('An error occured', undefined, { duration: 2000 });
-    });
+    if (initial[fieldName] !== user[fieldName]) {
+      this.usersService.patchUser(user).subscribe(res => {
+        this.snackBar.open('Updated successfully', undefined, { duration: 2000 });
+      }, err => {
+        user = initial;
+        this.snackBar.open('An error occured', undefined, { duration: 2000 });
+      });
+    }
   }
 
 }
