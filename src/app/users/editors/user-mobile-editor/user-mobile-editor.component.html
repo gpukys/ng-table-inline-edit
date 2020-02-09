@@ -1,0 +1,22 @@
+<div fxLayout="column" fxLayoutGap="16px">
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <h3>Edit user</h3>
+    <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  </div>
+  <div fxLayout="column" class="item">
+    <span>Name</span>
+    <app-string-editor [value]="user.name" (valueChange)="this.valueChanges.emit({user: user, fieldName: 'name', event: $event})"></app-string-editor>
+  </div>
+  <div fxLayout="column" class="item">
+    <span>Surname</span>
+    <app-string-editor [value]="user.surname" (valueChange)="this.valueChanges.emit({user: user, fieldName: 'surname', event: $event})"></app-string-editor>
+  </div>
+  <div fxLayout="column" class="item">
+    <span>Date of birth</span>
+    <app-date-editor [value]="user.dateOfBirth" (valueChange)="this.valueChanges.emit({user: user, fieldName: 'dateOfBirth', event: $event})"></app-date-editor>
+  </div>
+  <div fxLayout="column" class="item">
+    <span>Gender</span>
+    <app-choice-editor [value]="user.gender" (valueChange)="this.valueChanges.emit({user: user, fieldName: 'gender', event: $event})" [choices]="genderChoices"></app-choice-editor>
+  </div>
+</div>

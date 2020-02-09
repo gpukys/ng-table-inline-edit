@@ -1,18 +1,3 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  h2 {
-    margin-bottom: 16px;
-  }
-  div {
-    display: flex;
-    justify-content: flex-end;
-    button:not(:last-child) {
-      margin-right: 8px;
-    }
-  }
-}
-
 button.warn {
   background-color: #ff4444;
   color: white;

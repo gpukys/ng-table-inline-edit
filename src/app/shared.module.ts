@@ -9,6 +9,7 @@ import { MaterialModule } from './material.module';
 import { UsersModule } from './users/users.module';
 import { FormsModule } from '@angular/forms';
 import { DateAdapter, NativeDateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 export const DATE_FORMATS = {
   parse: {
@@ -29,7 +30,8 @@ export const DATE_FORMATS = {
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    FormsModule
+    FormsModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: DateAdapter, useClass: NativeDateAdapter },

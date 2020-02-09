@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  height: 100%;
+  width: calc(80vw - 48px);
+}
+.item {
+  span {
+    font-weight: bold;
+  }
+}

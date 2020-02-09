@@ -5,14 +5,16 @@
 </span>
 
 <ng-template #edit>
-  <mat-form-field>
-    <mat-label>Date</mat-label>
-    <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" readonly (click)="datepicker.open()">
-    <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
-    <mat-datepicker #datepicker></mat-datepicker>
-  </mat-form-field>
-  <app-editor-controls (confirm)="emitValue($event)"
-                       (cancel)="revertChange($event)"
-                       (delete)="deleteValue()">
-  </app-editor-controls>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field fxFlex="50">
+      <input matInput [matDatepicker]="datepicker" [(ngModel)]="value" readonly (click)="datepicker.open()">
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker></mat-datepicker>
+    </mat-form-field>
+    <app-editor-controls fxFlex="50"
+                         (confirm)="emitValue($event)"
+                         (cancel)="revertChange($event)"
+                         (delete)="deleteValue()">
+    </app-editor-controls>
+  </div>
 </ng-template>

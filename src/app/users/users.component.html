@@ -12,14 +12,21 @@
 
   <ng-container matColumnDef="dateOfBirth">
     <mat-header-cell *matHeaderCellDef> Date of birth </mat-header-cell>
-    <mat-cell *matCellDef="let user"><app-date-editor [value]="user.dateOfBirth" (valueChange)="onValueChange(user, 'dateOfBirth', $event)"></app-date-editor></mat-cell>
+    <mat-cell *matCellDef="let user"><app-date-editor [value]="user.dateOfBirth" [clickable]="!mobileQuery.matches" (valueChange)="onValueChange(user, 'dateOfBirth', $event)"></app-date-editor></mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="gender">
     <mat-header-cell *matHeaderCellDef> Gender </mat-header-cell>
-    <mat-cell *matCellDef="let user"><app-choice-editor [value]="user.gender" (valueChange)="onValueChange(user, 'gender', $event)" [choices]="genderChoices"></app-choice-editor></mat-cell>
+    <mat-cell *matCellDef="let user"><app-choice-editor [value]="user.gender" [clickable]="!mobileQuery.matches" (valueChange)="onValueChange(user, 'gender', $event)" [choices]="genderChoices"></app-choice-editor></mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="name-surname">
+    <mat-header-cell *matHeaderCellDef> Name/Surname </mat-header-cell>
+    <mat-cell *matCellDef="let user">
+      {{user.name}} {{user.surname}}
+    </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openMobileEditDialog(row)"></mat-row>
 </mat-table>

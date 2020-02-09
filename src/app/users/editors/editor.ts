@@ -14,10 +14,12 @@ export class Editor {
   }
   get value() { return this.VALUE; }
 
+  @Input() clickable = true;
+
   @Output() valueChange = new EventEmitter();
 
   @HostListener('click') onClick() {
-    if (!this.editMode) {
+    if (!this.editMode && this.clickable) {
       this.editMode = true;
     }
   }

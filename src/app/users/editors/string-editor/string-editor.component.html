@@ -3,11 +3,14 @@
 </span>
 
 <ng-template #edit>
-  <mat-form-field>
-    <input matInput [(ngModel)]="value">
-  </mat-form-field>
-  <app-editor-controls (confirm)="emitValue($event)"
-                       (cancel)="revertChange($event)"
-                       (delete)="deleteValue()">
-  </app-editor-controls>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field fxFlex="50">
+      <input matInput [(ngModel)]="value">
+    </mat-form-field>
+    <app-editor-controls fxFlex="50"
+                         (confirm)="emitValue($event)"
+                         (cancel)="revertChange($event)"
+                         (delete)="deleteValue()">
+    </app-editor-controls>
+  </div>
 </ng-template>

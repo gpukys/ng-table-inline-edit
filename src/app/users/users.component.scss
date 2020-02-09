@@ -1,0 +1,20 @@
+mat-table {
+  mat-header-cell {
+    background: #495159;
+    color: white;
+  }
+  mat-row {
+    height: 57px;
+    &:nth-child(2n) {
+      background-color: #efefef;
+    }
+    &:hover {
+      background-color: #dfdfdf;
+    }
+  }
+  mat-cell {
+    * {
+      cursor: pointer
+    }
+  }
+}

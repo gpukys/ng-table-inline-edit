@@ -7,6 +7,8 @@ import { DatePipe } from '@angular/common';
 import { DeletionConfirmationDialogComponent } from './editors/deletion-confirmation-dialog/deletion-confirmation-dialog.component';
 import { EditorControlsComponent } from './editors/editor-controls/editor-controls.component';
 import { UsersService } from './users.service';
+import { UserMobileEditorComponent } from './editors/user-mobile-editor/user-mobile-editor.component';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { UsersService } from './users.service';
     StringEditorComponent,
     ChoiceEditorComponent,
     DeletionConfirmationDialogComponent,
-    EditorControlsComponent
+    EditorControlsComponent,
+    UserMobileEditorComponent
   ],
   imports: [
     SharedModule
@@ -31,7 +34,8 @@ import { UsersService } from './users.service';
     UsersService
   ],
   entryComponents: [
-    DeletionConfirmationDialogComponent
+    DeletionConfirmationDialogComponent,
+    UserMobileEditorComponent
   ]
 })
 export class UsersModule { }

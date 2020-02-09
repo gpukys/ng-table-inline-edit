@@ -3,13 +3,16 @@
 </span>
 
 <ng-template #edit>
-  <mat-form-field>
-    <mat-select [(ngModel)]="value">
-      <mat-option *ngFor="let choice of choices" [value]="choice.value">{{choice.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <app-editor-controls (confirm)="emitValue($event)"
-                       (cancel)="revertChange($event)"
-                       (delete)="deleteValue()">
-  </app-editor-controls>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <mat-form-field fxFlex="50">
+      <mat-select [(ngModel)]="value">
+        <mat-option *ngFor="let choice of choices" [value]="choice.value">{{choice.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <app-editor-controls fxFlex="50"
+                         (confirm)="emitValue($event)"
+                         (cancel)="revertChange($event)"
+                         (delete)="deleteValue()">
+    </app-editor-controls>
+  </div>
 </ng-template>
